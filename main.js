@@ -12,7 +12,7 @@ export const options = {
   },
 };
 
-const BASE_URL = 'http://play-api.mineraland.io/api/v1/';
+const BASE_URL = 'https://play-api.mineraland.io/api/v1/';
 
 const authHeaders = {
   headers: {
