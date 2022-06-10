@@ -3,18 +3,18 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1m', target: 100 },
+    { duration: '1s', target: 100 },
   ],
   thresholds: {
     'http_req_duration': ['p(99)<1500'],
   },
 };
 
-const BASE_URL = 'https://play-api-staging.mineraland.io/api/v1/';
+const BASE_URL = 'http://127.0.0.1:3023/api/v1/';
 
 const authHeaders = {
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3LCJpYXQiOjE2NTQwMjYzMDAsImV4cCI6MTY1NDYyNjMwMH0.Ov9SPAm_vc1hzD1W6IJ4VOkvt7I2qp3w1X3MHzaq3Bw`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3LCJpYXQiOjE2NTQ1MDQ1NDMsImV4cCI6MTY1ODEwNDU0M30.OM_shJPb7UUuTi3Jtbnw4UKnw1nDO4LQZBlpCy1Uzno`,
     'Content-Type': 'application/json',
   },
 };
@@ -26,20 +26,26 @@ export default () => {
   const actionBegin = JSON.stringify({
     "action": [
       {
-        "diggerId": "629",
-        "blockId": "754368c2-6883-4e4e-8ae8-34ffa73cd24c"
+        "diggerId": 54,
+        "blockId": "ea04d226-0be7-4e9f-a2fa-8f0dbdd5fd7a"
+      }
+    ]
+  })
+  
+  
+  const actionFinish = JSON.stringify({
+    "action": [
+      {
+        "diggerId": 54,
+        "blockId": "ea04d226-0be7-4e9f-a2fa-8f0dbdd5fd7a"
       }
     ]
   })
 
-  const actionFinish = JSON.stringify({
-    "action": [
-      {
-        "diggerId": "629",
-        "blockId": "754368c2-6883-4e4e-8ae8-34ffa73cd24c"
-      }
-    ]
-  })
+  check(getDiggers, { 'Get Diggers 2xx': (obj) => obj.status >= 200 && obj.status < 300 });
+  check(getDiggers, { 'Get Diggers 3xx': (obj) => obj.status >= 300 && obj.status < 400 });
+  check(getDiggers, { 'Get Diggers 4xx': (obj) => obj.status >= 400 && obj.status < 500 });
+  check(getDiggers, { 'Get Diggers 5xx': (obj) => obj.status >= 500 && obj.status < 600 });
 
   const diggerActionBegin = http.post(BASE_URL + 'digger/digger-action-begin', actionBegin, authHeaders);
 
@@ -47,7 +53,7 @@ export default () => {
   check(diggerActionBegin, { 'Action Begin 3xx': (obj) => obj.status >= 300 && obj.status < 400 });
   check(diggerActionBegin, { 'Action Begin 4xx': (obj) => obj.status >= 400 && obj.status < 500 });
   check(diggerActionBegin, { 'Action Begin 5xx': (obj) => obj.status >= 500 && obj.status < 600 });
-
+  
   const diggerActionFinish = http.post(BASE_URL + 'digger/digger-action-finish', actionFinish, authHeaders);
 
   check(diggerActionFinish, { 'Action Finish 2xx': (obj) => obj.status >= 200 && obj.status < 300 });
