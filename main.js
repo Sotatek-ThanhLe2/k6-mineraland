@@ -29,7 +29,7 @@ export default () => {
   const actionBegin = JSON.stringify({
     "action": [
       {
-        "diggerId": 26636,
+        "diggerId": 26656,
         "blockId": "1321165486673571300"
       }
     ]
@@ -39,7 +39,7 @@ export default () => {
   const actionFinish = JSON.stringify({
     "action": [
       {
-        "diggerId": 26636,
+        "diggerId": 26656,
         "blockId": "1321165486673571300"
       }
     ]
