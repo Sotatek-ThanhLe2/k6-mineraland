@@ -16,7 +16,7 @@ const BASE_URL = 'https://play-api.mineraland.io/api/v1/';
 
 const authHeaders = {
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzMjEsImlhdCI6MTY1NDk0OTcyMiwiZXhwIjoxNjU1NTQ5NzIyfQ.8qIUEMr1MkTY9eiNDAnk4FZHHUWOxr_wOnDy3CUDYXs`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzMjEsImlhdCI6MTY1NDk1MjM2NywiZXhwIjoxNjU1NTUyMzY3fQ.kzSA3RpwV6aEJB6IUDVjT7M8Yle1Lz7_BQjkYqSPi1M`,
     'Content-Type': 'application/json',
   },
 };
@@ -29,8 +29,8 @@ export default () => {
   const actionBegin = JSON.stringify({
     "action": [
       {
-        "diggerId": 26643,
-        "blockId": "13211654866735714000"
+        "diggerId": 26636,
+        "blockId": "1321165486673571300"
       }
     ]
   })
@@ -39,8 +39,8 @@ export default () => {
   const actionFinish = JSON.stringify({
     "action": [
       {
-        "diggerId": 26643,
-        "blockId": "13211654866735714000"
+        "diggerId": 26636,
+        "blockId": "1321165486673571300"
       }
     ]
   })
