@@ -16,7 +16,7 @@ const BASE_URL = 'https://play-api.mineraland.io/api/v1/';
 
 const authHeaders = {
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzMjEsImlhdCI6MTY1NDk1MjM2NywiZXhwIjoxNjU1NTUyMzY3fQ.kzSA3RpwV6aEJB6IUDVjT7M8Yle1Lz7_BQjkYqSPi1M`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzMjEsImlhdCI6MTY1NDk1NDAxNCwiZXhwIjoxNjU1NTU0MDE0fQ.HyNL3ZfOPi9FUtvQb3or2PX08LtK_Y5Jt--xW4zXkD8`,
     'Content-Type': 'application/json',
   },
 };
