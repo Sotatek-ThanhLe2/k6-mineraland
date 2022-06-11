@@ -3,9 +3,9 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1m', target: 10000 },
-    { duration: '5m', target: 20000 },
-    { duration: '10m', target: 40000 },
+    { duration: '1m', target: 5000 },
+    { duration: '5m', target: 10000 },
+    { duration: '10m', target: 20000 },
   ],
   thresholds: {
     'http_req_duration': ['p(99)<1500'],
@@ -16,7 +16,7 @@ const BASE_URL = 'https://play-api.mineraland.io/api/v1/';
 
 const authHeaders = {
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzMjEsImlhdCI6MTY1NDg1ODI2MiwiZXhwIjoxNjU1NDU4MjYyfQ.gmonWFoajeV-cOdd4botsHHGjHBBvXI7RHSKiau-05g`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzMjEsImlhdCI6MTY1NDk0OTcyMiwiZXhwIjoxNjU1NTQ5NzIyfQ.8qIUEMr1MkTY9eiNDAnk4FZHHUWOxr_wOnDy3CUDYXs`,
     'Content-Type': 'application/json',
   },
 };
@@ -29,8 +29,8 @@ export default () => {
   const actionBegin = JSON.stringify({
     "action": [
       {
-        "diggerId": 54,
-        "blockId": "ea04d226-0be7-4e9f-a2fa-8f0dbdd5fd7a"
+        "diggerId": 26643,
+        "blockId": "13211654866735714000"
       }
     ]
   })
@@ -39,8 +39,8 @@ export default () => {
   const actionFinish = JSON.stringify({
     "action": [
       {
-        "diggerId": 54,
-        "blockId": "ea04d226-0be7-4e9f-a2fa-8f0dbdd5fd7a"
+        "diggerId": 26643,
+        "blockId": "13211654866735714000"
       }
     ]
   })
